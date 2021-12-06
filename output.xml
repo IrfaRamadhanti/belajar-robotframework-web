@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.9.6 on win32)" generated="20211206 13:09:54.629" rpa="false" schemaversion="2">
+<suite id="s1" name="TestLogin" source="C:\Users\ASA Com\Documents\GitHub\belajar-robotframework-web\TestLogin.robot">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${WebURL}</arg>
+<arg>${BROWSERS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20211206 13:09:55.218" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<status status="PASS" starttime="20211206 13:09:55.217" endtime="20211206 13:09:59.884"/>
+</kw>
+<test id="s1-t1" name="Login with invalid credentials Should failed with CSV failed">
+<kw name="I want to login with invalid credentials">
+<arg>standard_user</arg>
+<arg>xs</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 13:09:59.891" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20211206 13:09:59.890" endtime="20211206 13:10:00.116"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 13:10:00.117" level="INFO">Typing text 'xs' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20211206 13:10:00.116" endtime="20211206 13:10:00.256"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 13:10:00.257" level="INFO">Clicking element 'id=login-button'.</msg>
+<status status="PASS" starttime="20211206 13:10:00.256" endtime="20211206 13:10:00.354"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20211206 13:10:00.498" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20211206 13:10:00.355" endtime="20211206 13:10:00.499"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Epic sadface: Username and password do not match any user in this service</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20211206 13:10:00.530" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20211206 13:10:00.499" endtime="20211206 13:10:00.531"/>
+</kw>
+<status status="PASS" starttime="20211206 13:09:59.889" endtime="20211206 13:10:00.532"/>
+</kw>
+<status status="PASS" starttime="20211206 13:09:59.884" endtime="20211206 13:10:00.533"/>
+</test>
+<test id="s1-t2" name="Login with invalid credentials Should failed with CSV failed">
+<kw name="I want to login with invalid credentials">
+<arg>standard_user</arg>
+<arg>ssss</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 13:10:00.547" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20211206 13:10:00.546" endtime="20211206 13:10:00.773"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 13:10:00.775" level="INFO">Typing text 'ssss' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20211206 13:10:00.773" endtime="20211206 13:10:00.907"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 13:10:00.908" level="INFO">Clicking element 'id=login-button'.</msg>
+<status status="PASS" starttime="20211206 13:10:00.907" endtime="20211206 13:10:00.961"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20211206 13:10:01.095" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20211206 13:10:00.961" endtime="20211206 13:10:01.096"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Epic sadface: Username and password do not match any user in this service</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20211206 13:10:01.115" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20211206 13:10:01.096" endtime="20211206 13:10:01.115"/>
+</kw>
+<status status="PASS" starttime="20211206 13:10:00.544" endtime="20211206 13:10:01.115"/>
+</kw>
+<status status="PASS" starttime="20211206 13:10:00.539" endtime="20211206 13:10:01.116"/>
+</test>
+<test id="s1-t3" name="Login with invalid credentials Should failed with CSV failed">
+<kw name="I want to login with invalid credentials">
+<arg>standard_user</arg>
+<arg>sw3s</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 13:10:01.127" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20211206 13:10:01.126" endtime="20211206 13:10:01.339"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 13:10:01.340" level="INFO">Typing text 'sw3s' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20211206 13:10:01.339" endtime="20211206 13:10:01.457"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 13:10:01.458" level="INFO">Clicking element 'id=login-button'.</msg>
+<status status="PASS" starttime="20211206 13:10:01.458" endtime="20211206 13:10:01.511"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20211206 13:10:01.682" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20211206 13:10:01.511" endtime="20211206 13:10:01.682"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Epic sadface: Username and password do not match any user in this service</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20211206 13:10:01.703" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20211206 13:10:01.683" endtime="20211206 13:10:01.703"/>
+</kw>
+<status status="PASS" starttime="20211206 13:10:01.125" endtime="20211206 13:10:01.704"/>
+</kw>
+<status status="PASS" starttime="20211206 13:10:01.120" endtime="20211206 13:10:01.705"/>
+</test>
+<test id="s1-t4" name="Login with invalid credentials Should failed with CSV failed">
+<kw name="I want to login with invalid credentials">
+<arg>standard_user</arg>
+<arg>sdas</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=user-name</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 13:10:01.712" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<status status="PASS" starttime="20211206 13:10:01.712" endtime="20211206 13:10:01.908"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211206 13:10:01.909" level="INFO">Typing text 'sdas' into text field 'id=password'.</msg>
+<status status="PASS" starttime="20211206 13:10:01.908" endtime="20211206 13:10:02.022"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>id=login-button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211206 13:10:02.022" level="INFO">Clicking element 'id=login-button'.</msg>
+<status status="PASS" starttime="20211206 13:10:02.022" endtime="20211206 13:10:02.069"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20211206 13:10:02.197" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20211206 13:10:02.069" endtime="20211206 13:10:02.198"/>
+</kw>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>Epic sadface: Username and password do not match any user in this service</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20211206 13:10:02.215" level="INFO">Current page contains text 'Epic sadface: Username and password do not match any user in this service'.</msg>
+<status status="PASS" starttime="20211206 13:10:02.198" endtime="20211206 13:10:02.215"/>
+</kw>
+<status status="PASS" starttime="20211206 13:10:01.711" endtime="20211206 13:10:02.216"/>
+</kw>
+<status status="PASS" starttime="20211206 13:10:01.707" endtime="20211206 13:10:02.216"/>
+</test>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20211206 13:10:02.220" endtime="20211206 13:10:04.652"/>
+</kw>
+<status status="PASS" starttime="20211206 13:09:54.632" endtime="20211206 13:10:04.652"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="4" fail="0" skip="0" id="s1" name="TestLogin">TestLogin</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20211206 13:10:00.538" level="WARN">Multiple test cases with name 'Login with invalid credentials Should failed with CSV failed' executed in test suite 'TestLogin'.</msg>
+<msg timestamp="20211206 13:10:01.119" level="WARN">Multiple test cases with name 'Login with invalid credentials Should failed with CSV failed' executed in test suite 'TestLogin'.</msg>
+<msg timestamp="20211206 13:10:01.707" level="WARN">Multiple test cases with name 'Login with invalid credentials Should failed with CSV failed' executed in test suite 'TestLogin'.</msg>
+</errors>
+</robot>
