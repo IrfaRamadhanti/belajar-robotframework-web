@@ -19,6 +19,6 @@ Chromedriver untuk OS masing2
 Berikut adalah langkah2 nya :
 
 1. Buat Project pada IDE, disini saya menggunakan Visual Studio Code
+![image](https://user-images.githubusercontent.com/73830257/146033460-f571f37b-e849-4a2e-884d-2718f1ad0cb5.png)
 
-![image](https://user-images.githubusercontent.com/73830257/146033340-2f87bd18-1479-41c7-9c07-88d4856bb864.png)
 
