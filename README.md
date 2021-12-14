@@ -27,91 +27,102 @@ Berikut adalah langkah2 nya :
 3. Buat file TestLogin.robot lalu maskan teks seperti berikut
 ![image](https://user-images.githubusercontent.com/73830257/146034595-8a5621fd-0688-429e-8860-469f6b0f6ec2.png)
 
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+*** Settings ***
+Library              SeleniumLibrary
+Suite Setup          Open Browser    ${WebURL}        ${BROWSERS}
+Suite Teardown       Close Browser
+Library              DataDriver     credentials.csv       sheet_name=Sheet1
+Test Template        I want to login with invalid credentials
 
-    <groupId>org.example</groupId>
-    <artifactId>automation-bdd-google</artifactId>
-    <version>1.0-SNAPSHOT</version>
+*** Variables ***
+${BROWSERS}          Chrome
+${WebURL}            https://www.saucedemo.com/
 
-    <properties>
-        <maven.compiler.source>15</maven.compiler.source>
-        <maven.compiler.target>15</maven.compiler.target>
-    </properties>
-    <dependencies>
+*** Keywords ***
+I want to login with invalid credentials
+    [Arguments]            ${username}         ${password}
+    Input Text             id=user-name        ${username}
+    Input Text             id=password         ${password}
+    Click Element          id=login-button
+    Capture Page Screenshot
+    Page Should Contain    Epic sadface: Username and password do not match any user in this service
 
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>6.9.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>6.9.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/net.masterthought/cucumber-reporting -->
-        <dependency>
-            <groupId>net.masterthought</groupId>
-            <artifactId>cucumber-reporting</artifactId>
-            <version>5.4.0</version>
-        </dependency>
+*** Test Cases ***
+# Login with invalid credentials userA                ${username}      ${password}
+# Login with invalid credentials userB                ${username}      ${password}  
+# Login with invalid credentials userC                ${username}      ${password} 
+# Login with invalid credentials standar_user         standard_user     secret_sauce
+Login with invalid credentials Should failed with CSV failed       ${username}       ${password}
 
 
-    </dependencies>
+4. Tambahkan Webdriver (disini saya menggunakan ChromeDriver dan bisa di download di "https://chromedriver.chromium.org/downloads") lalu buat Directory driver dan simpan ChromeDriver
+![image](https://user-images.githubusercontent.com/73830257/146036085-454ee1fa-4283-4a3b-b669-bfd649b8c087.png)
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.0</version>
-                <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>2.8.0</version>
-                <executions>
-                    <execution>
-                        <id>execution</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>automation-bdd-google</projectName>
-                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
-                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-</project>
+
+5. Buat folder resource dan step, buat directory login_locators.yaml dan login_page.robot dalam folder resource
+![image](https://user-images.githubusercontent.com/73830257/146037027-4c3d0a31-5907-4221-b9f5-2fee8fafdb3d.png)
+![image](https://user-images.githubusercontent.com/73830257/146037058-9b860a5d-140d-4194-aba7-2638d1de6b9b.png)
+
+login_locators.yaml
+
+txtUsername : user-name
+txtPassword : password
+btnLogin    : login-button
+
+login_page.robot
+
+* Settings *
+Library                    SeleniumLibrary
+Variables                  ../Resources/login_locators.yaml
+* Variables *
+${WebSauceDemo}            https://www.saucedemo.com/
+${BROWSER}                 chrome
+* Keywords *
+Open Browser to WebSauceDemo
+    Open Browser    ${WebSauceDemo}   ${BROWSER}
+    Maximize browser window
+Close my Browsers
+    Close Browser
+Input Username
+    [Arguments]     ${username}
+    Input Text      ${txtUsername}    ${username}
+Input Password
+    [Arguments]     ${password}
+    Input Text      ${txtPassword}    ${password}
+Click button login
+    Click Element   ${btnLogin}
+    Sleep    2s
+Verify on Login page
+    Page Should Contain    Accepted usernames are:
+Shoud showing dashboard
+    Page Should Contain    Sauce Labs Backpack
+Should showing error login
+    Page Should Contain    Username and password do not match any user in this service
+Should showing username required
+    Page Should Contain    Username is required 
+Should showing password required
+    Page Should Contain    Password is required
+    
+    
+6. input file credentials.csv seperti berikut
+![image](https://user-images.githubusercontent.com/73830257/146037692-26e327ae-24ee-4e6c-811c-8bd235a815dd.png)
+
+credentials.csv
+
+${username};${password}
+standard_user;xs;
+standard_user;ssss;
+standard_user;sw3s;
+standard_user;sdas;
+
+
+Dan untuk cara mencari Elementnya bagaimana? Klik kanan aja lalu klik inspect element dan arahkan pada elementnya, contoh seperti dibawah ini :
+![image](https://user-images.githubusercontent.com/73830257/146038180-533da8dc-de4f-4435-8800-335533058eed.png)
+
+![image](https://user-images.githubusercontent.com/73830257/146038290-50e02419-7838-4fa8-ad85-f6292036511d.png)
+
+![image](https://user-images.githubusercontent.com/73830257/146038348-35b292ba-92a8-4b9a-8af3-2fdc2dd86606.png)
+
+continue..
+
+
